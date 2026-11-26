@@ -1,0 +1,1521 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>九一免费版电脑版官网_九一免费版功能说明_九一免费版电脑端使用指南</title>
+<meta name="description" content="九一免费版电脑版官网提供九一免费版电脑端的功能清单、版本更新记录、安装配置要点与常见问题解答，梳理影音播放、格式转换、下载管理等模块的具体用法，适合首次安装与长期使用的桌面用户参考。">
+<meta name="keywords" content="九一免费版功能说明,电脑端安装配置,影音播放器模块,格式转换工具,版本更新记录">
+<style>
+:root{
+  --ink:#14181f;
+  --ink-2:#3c4552;
+  --ink-3:#6b7684;
+  --line:#e3e7ee;
+  --line-2:#eef1f6;
+  --bg:#f6f8fb;
+  --panel:#ffffff;
+  --brand:#1b5cff;
+  --brand-deep:#0b3bbd;
+  --brand-soft:#eaf0ff;
+  --accent:#ff5a3c;
+  --accent-soft:#fff0ec;
+  --ok:#0f9d63;
+  --ok-soft:#e8f8f1;
+  --radius:14px;
+  --radius-sm:9px;
+  --shadow:0 1px 2px rgba(20,24,31,.04),0 8px 24px rgba(20,24,31,.06);
+  --shadow-sm:0 1px 2px rgba(20,24,31,.05);
+  --head-h:62px;
+  --notice-h:38px;
+  --max:1320px;
+  --gap:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  font-size:15px;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+
+/* ============ 吸顶公告条 ============ */
+.notice{
+  position:sticky;top:0;z-index:60;height:var(--notice-h);
+  background:linear-gradient(90deg,#0b1a3f,#12306f 55%,#1b5cff);
+  color:#dce6ff;font-size:13px;
+  display:flex;align-items:center;
+}
+.notice .wrap{
+  max-width:var(--max);margin:0 auto;padding:0 20px;width:100%;
+  display:flex;align-items:center;gap:12px;overflow:hidden;
+}
+.notice-badge{
+  flex:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:1px 9px;font-size:11.5px;letter-spacing:.4px;color:#fff;
+}
+.notice-track{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#e8eeff}
+.notice-track b{color:#fff;font-weight:600}
+.notice-track span{opacity:.55;margin:0 8px}
+
+/* ============ 页头 ============ */
+.head{
+  position:sticky;top:var(--notice-h);z-index:55;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.head .wrap{
+  max-width:var(--max);margin:0 auto;padding:0 20px;width:100%;
+  height:var(--head-h);display:flex;align-items:center;gap:26px;
+}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.brand-mark{width:34px;height:34px;flex:none}
+.brand-txt{display:flex;flex-direction:column;line-height:1.1}
+.brand-txt strong{font-size:16.5px;letter-spacing:.3px;font-weight:800}
+.brand-txt em{font-style:normal;font-size:10.5px;color:var(--ink-3);letter-spacing:1.2px;margin-top:3px}
+.nav{display:flex;align-items:center;gap:4px;flex:1;min-width:0;overflow:hidden}
+.nav a{
+  padding:7px 11px;border-radius:8px;font-size:14px;color:var(--ink-2);
+  white-space:nowrap;transition:.16s;
+}
+.nav a:hover{background:var(--brand-soft);color:var(--brand-deep)}
+.head-act{display:flex;align-items:center;gap:10px;flex:none}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;border-radius:9px;
+  border:1px solid var(--line);background:#fff;color:var(--ink-2);
+  padding:8px 15px;font-size:14px;transition:.16s;white-space:nowrap;
+}
+.btn:hover{border-color:#c8d2e6;color:var(--ink)}
+.btn-primary{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600;box-shadow:0 4px 14px rgba(27,92,255,.24)}
+.btn-primary:hover{background:var(--brand-deep);border-color:var(--brand-deep);color:#fff}
+.menu-btn{display:none}
+
+/* ============ 首屏 ============ */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 380px at 82% -10%, rgba(27,92,255,.16), transparent 62%),
+    radial-gradient(620px 320px at 6% 108%, rgba(255,90,60,.10), transparent 60%),
+    linear-gradient(180deg,#fbfcff,#f2f6ff 70%,var(--bg));
+  border-bottom:1px solid var(--line);
+}
+.hero .wrap{
+  max-width:var(--max);margin:0 auto;padding:52px 20px 46px;width:100%;
+  display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.6px;
+  color:var(--brand-deep);background:var(--brand-soft);border:1px solid #d7e2ff;
+  padding:4px 12px;border-radius:999px;font-weight:600;
+}
+.hero h1{
+  font-size:clamp(30px,3.6vw,46px);line-height:1.2;letter-spacing:-.5px;
+  margin:16px 0 14px;font-weight:850;
+}
+.hero h1 .hl{
+  background:linear-gradient(180deg,transparent 64%,rgba(27,92,255,.22) 64%);
+}
+.hero-lead{font-size:15.5px;color:var(--ink-2);max-width:560px;line-height:1.85}
+.hero-points{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 24px}
+.hero-points li{
+  font-size:13px;color:var(--ink-2);background:#fff;border:1px solid var(--line);
+  padding:5px 12px;border-radius:999px;box-shadow:var(--shadow-sm);
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-meta{margin-top:22px;display:flex;gap:26px;flex-wrap:wrap}
+.hero-meta div{font-size:12.5px;color:var(--ink-3)}
+.hero-meta b{display:block;font-size:21px;color:var(--ink);font-weight:800;letter-spacing:-.3px;line-height:1.3}
+
+/* 首屏视觉：程序窗口 + 播放器构图 */
+.hero-visual{position:relative}
+.win{
+  background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(16,40,100,.14),0 2px 6px rgba(16,40,100,.06);
+}
+.win-bar{
+  height:36px;display:flex;align-items:center;gap:7px;padding:0 14px;
+  background:linear-gradient(180deg,#f7f9fd,#eef2fa);border-bottom:1px solid var(--line);
+}
+.dot{width:9px;height:9px;border-radius:50%}
+.win-bar .d1{background:#ff6058}.win-bar .d2{background:#ffbd2e}.win-bar .d3{background:#28c840}
+.win-title{margin-left:8px;font-size:11.5px;color:var(--ink-3);letter-spacing:.4px}
+.win-body{display:grid;grid-template-columns:1fr 128px;gap:0}
+.player{
+  position:relative;background:#0b1220;aspect-ratio:16/10;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.player::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(140deg,rgba(27,92,255,.42),rgba(11,18,32,.1) 46%,rgba(255,90,60,.24));
+}
+.player-play{
+  position:relative;z-index:2;width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 22px rgba(0,0,0,.32);
+}
+.player-play::before{
+  content:"";width:0;height:0;border-left:15px solid #14203a;
+  border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px;
+}
+.player-tag{
+  position:absolute;left:12px;bottom:12px;z-index:2;font-size:11px;color:#eaf0ff;
+  background:rgba(10,18,34,.6);border:1px solid rgba(255,255,255,.2);
+  padding:2px 9px;border-radius:6px;backdrop-filter:blur(4px);
+}
+.side-list{padding:12px 12px;border-left:1px solid var(--line-2);background:#fcfdff}
+.side-list h4{font-size:11px;color:var(--ink-3);letter-spacing:.8px;margin-bottom:9px;font-weight:700}
+.side-item{display:flex;gap:7px;align-items:center;margin-bottom:11px}
+.side-thumb{width:26px;height:20px;border-radius:4px;background:linear-gradient(135deg,#dce6ff,#b9ccff);flex:none}
+.side-item:nth-child(3) .side-thumb{background:linear-gradient(135deg,#ffe0d8,#ffc3b3)}
+.side-item:nth-child(4) .side-thumb{background:linear-gradient(135deg,#d8f6e8,#aee9cf)}
+.side-item:nth-child(5) .side-thumb{background:linear-gradient(135deg,#e9e2ff,#cfc2ff)}
+.side-line{height:5px;border-radius:3px;background:#e6ecf7;flex:1}
+.side-item:nth-child(2) .side-line{width:70%;flex:none}
+.side-item:nth-child(4) .side-line{width:56%;flex:none}
+.float-card{
+  position:absolute;right:-14px;bottom:-22px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:11px 14px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;
+}
+.float-card .fc-ico{
+  width:30px;height:30px;border-radius:8px;background:var(--ok-soft);color:var(--ok);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none;
+}
+.float-card p{font-size:12px;color:var(--ink-3);line-height:1.45}
+.float-card p b{display:block;color:var(--ink);font-size:13px}
+
+/* ============ 布局：三栏门户 ============ */
+.layout{
+  max-width:var(--max);margin:0 auto;padding:30px 20px 0;width:100%;
+  display:grid;grid-template-columns:182px minmax(0,1fr) 268px;gap:var(--gap);
+  align-items:start;
+}
+.col-left{position:sticky;top:calc(var(--notice-h) + var(--head-h) + 16px)}
+.col-right{position:sticky;top:calc(var(--notice-h) + var(--head-h) + 16px)}
+[id]{scroll-margin-top:calc(var(--notice-h) + var(--head-h) + 18px)}
+
+/* 左频道索引 */
+.side-box{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);overflow:hidden;
+}
+.side-box + .side-box{margin-top:16px}
+.side-head{
+  padding:12px 14px 10px;font-size:12px;letter-spacing:1px;color:var(--ink-3);
+  font-weight:700;border-bottom:1px solid var(--line-2);background:#fbfcfe;
+}
+.chan-list{padding:7px}
+.chan-list a{
+  display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:8px;
+  font-size:13.5px;color:var(--ink-2);transition:.15s;
+}
+.chan-list a:hover{background:var(--brand-soft);color:var(--brand-deep)}
+.chan-list .cn-dot{width:6px;height:6px;border-radius:2px;background:#c3cee4;flex:none}
+.chan-list a:hover .cn-dot{background:var(--brand)}
+.chan-list .cn-num{margin-left:auto;font-size:11px;color:#9aa5b6;font-variant-numeric:tabular-nums}
+.left-note{padding:12px 14px;font-size:12px;color:var(--ink-3);line-height:1.7;border-top:1px solid var(--line-2);background:#fbfcfe}
+.left-note b{color:var(--ink-2)}
+
+/* 主栏 */
+.main{min-width:0;display:flex;flex-direction:column;gap:var(--gap)}
+.panel{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:24px 26px;
+}
+.panel-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.panel-title{font-size:19.5px;font-weight:800;letter-spacing:-.2px;display:flex;align-items:center;gap:10px;line-height:1.35}
+.panel-title::before{
+  content:"";width:4px;height:18px;border-radius:2px;flex:none;
+  background:linear-gradient(180deg,var(--brand),#6f9bff);
+}
+.panel-sub{font-size:12.5px;color:var(--ink-3);margin-top:4px;padding-left:14px}
+.panel-link{font-size:13px;color:var(--brand-deep);font-weight:600;white-space:nowrap}
+.panel-link:hover{text-decoration:underline}
+
+/* 概览正文 */
+.prose p{color:var(--ink-2);margin-bottom:13px;line-height:1.86}
+.prose p:last-child{margin-bottom:0}
+.prose b{color:var(--ink);font-weight:700}
+.prose .kw{color:var(--brand-deep);font-weight:700}
+.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.ov-card{
+  background:linear-gradient(180deg,#fbfcff,#f5f8ff);border:1px solid var(--line-2);
+  border-radius:var(--radius-sm);padding:13px 14px;
+}
+.ov-card h4{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.ov-card p{font-size:12.5px;color:var(--ink-3);line-height:1.65}
+
+/* 精选卡片 */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;
+  background:#fff;display:flex;flex-direction:column;transition:.18s;
+}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:#d3ddec}
+.card-cover{position:relative;aspect-ratio:4/3;overflow:hidden;background:#eef2f8}
+.card-cover img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.card:hover .card-cover img{transform:scale(1.04)}
+.card-cover .badge{
+  position:absolute;left:8px;top:8px;font-size:11px;padding:2px 8px;border-radius:5px;
+  background:rgba(10,18,34,.72);color:#fff;backdrop-filter:blur(3px);letter-spacing:.3px;
+}
+.card-body{padding:12px 13px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-body h3{font-size:14.5px;font-weight:750;line-height:1.45}
+.card-body .desc{font-size:12.5px;color:var(--ink-3);line-height:1.68;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{
+  font-size:11px;padding:1.5px 7px;border-radius:5px;background:var(--brand-soft);
+  color:var(--brand-deep);border:1px solid #dbe5ff;
+}
+.tag.gray{background:#f3f5f9;color:var(--ink-3);border-color:var(--line)}
+.tag.warm{background:var(--accent-soft);color:#c93a1d;border-color:#ffdcd2}
+.card-foot{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#96a1b2;border-top:1px dashed var(--line-2);padding-top:8px}
+.card-foot .hot{color:var(--accent);font-weight:700}
+
+/* 动态列表 */
+.upd-list{display:flex;flex-direction:column}
+.upd-item{
+  display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;
+  padding:11px 2px;border-bottom:1px dashed var(--line-2);
+}
+.upd-item:last-child{border-bottom:0}
+.upd-time{font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;line-height:1.4}
+.upd-time b{display:block;font-size:12.5px;color:var(--ink-2);font-weight:700}
+.upd-main h4{font-size:14px;font-weight:700;margin-bottom:2px}
+.upd-main p{font-size:12.5px;color:var(--ink-3);line-height:1.6}
+.upd-flag{font-size:11px;padding:1px 7px;border-radius:4px;background:var(--ok-soft);color:var(--ok);font-weight:600;white-space:nowrap}
+.upd-flag.new{background:var(--accent-soft);color:#c93a1d}
+
+/* 分类入口 */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.cat{
+  display:flex;flex-direction:column;gap:5px;padding:13px 13px 12px;border-radius:var(--radius-sm);
+  border:1px solid var(--line);background:linear-gradient(180deg,#fff,#fafcff);transition:.16s;
+}
+.cat:hover{border-color:#c9d8ff;background:var(--brand-soft);transform:translateY(-1px)}
+.cat b{font-size:14px;font-weight:750;display:flex;align-items:center;gap:7px}
+.cat b i{width:5px;height:5px;border-radius:2px;background:var(--brand);flex:none;font-style:normal}
+.cat span{font-size:12px;color:var(--ink-3);line-height:1.6}
+.cat em{font-style:normal;font-size:11px;color:#9aa5b6}
+
+/* 深度解析 */
+.deep h3{
+  font-size:16px;font-weight:800;margin:22px 0 9px;padding-left:12px;position:relative;
+}
+.deep h3:first-child{margin-top:0}
+.deep h3::before{
+  content:"";position:absolute;left:0;top:7px;width:3px;height:15px;border-radius:2px;
+  background:var(--accent);
+}
+.deep p{color:var(--ink-2);line-height:1.9;margin-bottom:12px}
+.deep ul{margin:6px 0 14px;display:flex;flex-direction:column;gap:8px}
+.deep ul li{
+  font-size:14px;color:var(--ink-2);padding-left:18px;position:relative;line-height:1.78;
+}
+.deep ul li::before{
+  content:"";position:absolute;left:2px;top:10px;width:5px;height:5px;border-radius:50%;
+  background:var(--brand);opacity:.6;
+}
+.deep ul li b{color:var(--ink);font-weight:700}
+.compare{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 18px;
+}
+.compare-item{border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 15px;background:#fbfcff}
+.compare-item h4{font-size:13.5px;font-weight:750;margin-bottom:7px;color:var(--brand-deep)}
+.compare-item dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 10px;font-size:12.5px}
+.compare-item dt{color:var(--ink-3)}
+.compare-item dd{margin:0;color:var(--ink-2)}
+.quote{
+  border-left:3px solid var(--brand);background:var(--brand-soft);border-radius:0 8px 8px 0;
+  padding:12px 16px;font-size:13.5px;color:var(--ink-2);margin:14px 0;
+}
+.quote b{color:var(--brand-deep)}
+
+/* 体验指南步骤 */
+.steps{display:flex;flex-direction:column;gap:0;counter-reset:st}
+.step{
+  display:grid;grid-template-columns:38px 1fr;gap:14px;padding:15px 0;
+  border-bottom:1px dashed var(--line-2);
+}
+.step:last-child{border-bottom:0;padding-bottom:0}
+.step:first-child{padding-top:0}
+.step-no{
+  counter-increment:st;width:32px;height:32px;border-radius:9px;background:var(--brand-soft);
+  color:var(--brand-deep);display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:14px;border:1px solid #d9e3ff;
+}
+.step-no::before{content:counter(st,decimal-leading-zero)}
+.step h4{font-size:14.5px;font-weight:750;margin-bottom:4px}
+.step p{font-size:13.5px;color:var(--ink-3);line-height:1.78}
+
+/* FAQ */
+.faq details{
+  border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:10px;
+  background:#fff;overflow:hidden;transition:.15s;
+}
+.faq details[open]{border-color:#c9d8ff;box-shadow:0 2px 12px rgba(27,92,255,.07)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:13px 16px 13px 40px;position:relative;
+  font-size:14px;font-weight:650;color:var(--ink);line-height:1.6;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{
+  content:"Q";position:absolute;left:15px;top:13px;font-size:12px;font-weight:800;
+  color:var(--brand);background:var(--brand-soft);width:17px;height:17px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;line-height:1;
+}
+.faq summary::after{
+  content:"";position:absolute;right:16px;top:19px;width:7px;height:7px;
+  border-right:1.6px solid var(--ink-3);border-bottom:1.6px solid var(--ink-3);
+  transform:rotate(45deg);transition:.2s;
+}
+.faq details[open] summary::after{transform:rotate(-135deg);top:21px}
+.faq .ans{padding:0 16px 15px 40px;font-size:13.5px;color:var(--ink-3);line-height:1.82}
+.faq .ans b{color:var(--ink-2)}
+
+/* 评论 */
+.cmt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cmt{
+  border:1px solid var(--line-2);border-radius:var(--radius-sm);padding:12px 14px;background:#fcfdff;
+}
+.cmt-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.avatar{
+  width:26px;height:26px;border-radius:50%;flex:none;color:#fff;font-size:11.5px;
+  display:flex;align-items:center;justify-content:center;font-weight:700;
+}
+.cmt-top .nm{font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.cmt-top .tm{font-size:11px;color:#9aa5b6;margin-left:auto}
+.cmt p{font-size:13px;color:var(--ink-3);line-height:1.75}
+.cmt p b{color:var(--ink-2);font-weight:650}
+
+/* 资讯 */
+.news-list{display:flex;flex-direction:column;gap:12px}
+.news{
+  display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;
+  border:1px solid var(--line-2);border-radius:var(--radius-sm);padding:10px;background:#fff;transition:.16s;
+}
+.news:hover{border-color:#d3ddec;box-shadow:var(--shadow-sm)}
+.news img{width:120px;height:80px;object-fit:cover;border-radius:7px}
+.news h4{font-size:14px;font-weight:750;margin-bottom:3px;line-height:1.5}
+.news p{font-size:12.5px;color:var(--ink-3);line-height:1.65}
+.news .dt{font-size:11.5px;color:#9aa5b6;margin-top:4px;font-variant-numeric:tabular-nums}
+
+/* 相关推荐索引 */
+.rel-tags{display:flex;flex-wrap:wrap;gap:9px}
+.rel-tags a{
+  font-size:13px;padding:6px 13px;border-radius:8px;border:1px solid var(--line);
+  background:#fff;color:var(--ink-2);transition:.15s;
+}
+.rel-tags a:hover{background:var(--brand-soft);border-color:#c9d8ff;color:var(--brand-deep)}
+.rel-tags a span{color:#9aa5b6;font-size:11.5px;margin-left:5px}
+
+/* 榜单 */
+.rank-list{display:flex;flex-direction:column}
+.rank{
+  display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;
+  padding:10px 2px;border-bottom:1px dashed var(--line-2);
+}
+.rank:last-child{border-bottom:0}
+.rank-no{
+  font-size:14px;font-weight:800;color:#b6c0d0;font-variant-numeric:tabular-nums;text-align:center;
+}
+.rank:nth-child(1) .rank-no{color:#e8482a}
+.rank:nth-child(2) .rank-no{color:#f08c1e}
+.rank:nth-child(3) .rank-no{color:#d8a531}
+.rank h4{font-size:13.5px;font-weight:700}
+.rank p{font-size:12px;color:var(--ink-3);line-height:1.5}
+.rank .score{font-size:12.5px;font-weight:800;color:var(--brand-deep);font-variant-numeric:tabular-nums}
+
+/* 右辅助栏 */
+.r-box{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:16px 15px;
+}
+.r-box + .r-box{margin-top:16px}
+.r-title{font-size:13px;font-weight:800;letter-spacing:.3px;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.r-title::before{content:"";width:3px;height:13px;border-radius:2px;background:var(--accent)}
+.search-wrap{display:flex;gap:7px}
+.search-wrap input{
+  flex:1;min-width:0;border:1px solid var(--line);border-radius:8px;padding:7px 10px;
+  font-size:13px;color:var(--ink);background:#fbfcfe;outline:none;transition:.15s;
+}
+.search-wrap input:focus{border-color:var(--brand);background:#fff;box-shadow:0 0 0 3px rgba(27,92,255,.1)}
+.search-wrap button{
+  border:1px solid var(--brand);background:var(--brand);color:#fff;border-radius:8px;
+  padding:0 12px;font-size:13px;font-weight:600;transition:.15s;
+}
+.search-wrap button:hover{background:var(--brand-deep)}
+.search-out{margin-top:9px;font-size:12.5px;color:var(--ink-3);line-height:1.7}
+.search-out b{color:var(--ink)}
+.search-hit{display:block;padding:5px 0;border-bottom:1px dashed var(--line-2);color:var(--ink-2)}
+.search-hit:hover{color:var(--brand-deep)}
+.search-empty{color:#c93a1d;background:var(--accent-soft);border-radius:6px;padding:6px 9px}
+
+.r-upd{display:flex;flex-direction:column;gap:11px}
+.r-upd li{font-size:12.5px;color:var(--ink-2);line-height:1.6;padding-left:13px;position:relative}
+.r-upd li::before{
+  content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;
+  background:var(--brand);opacity:.55;
+}
+.r-upd li b{display:block;color:var(--ink);font-weight:700;font-size:12.8px}
+.r-upd li span{color:#9aa5b6;font-size:11px;font-variant-numeric:tabular-nums}
+
+.r-stat{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.r-stat div{background:#fbfcfe;border:1px solid var(--line-2);border-radius:8px;padding:9px 10px}
+.r-stat b{display:block;font-size:17px;font-weight:800;letter-spacing:-.4px;line-height:1.25}
+.r-stat span{font-size:11.5px;color:var(--ink-3)}
+
+.r-ver{display:flex;flex-direction:column;gap:9px}
+.r-ver li{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--ink-2);border-bottom:1px dashed var(--line-2);padding-bottom:8px}
+.r-ver li:last-child{border-bottom:0;padding-bottom:0}
+.r-ver em{font-style:normal;color:#9aa5b6;font-variant-numeric:tabular-nums;font-size:11.5px}
+.r-ver b{font-weight:700}
+
+/* 页尾 */
+.foot{background:#0e1626;color:#a9b6cc;margin-top:44px;padding:44px 0 0}
+.foot .wrap{max-width:var(--max);margin:0 auto;padding:0 20px;width:100%}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px;padding-bottom:32px}
+.foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.foot-brand strong{color:#fff;font-size:16px;font-weight:800;letter-spacing:.3px}
+.foot-desc{font-size:13px;line-height:1.85;color:#8494ad;max-width:330px}
+.foot h5{color:#e6edf9;font-size:13.5px;font-weight:700;margin-bottom:12px;letter-spacing:.3px}
+.foot-col li{margin-bottom:8px}
+.foot-col a{font-size:13px;color:#8494ad;transition:.15s}
+.foot-col a:hover{color:#fff}
+.foot-note{
+  border-top:1px solid rgba(255,255,255,.08);padding:18px 0 26px;font-size:12px;
+  color:#6b7b94;line-height:1.9;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.foot-note p{max-width:760px}
+.foot-note .cp{white-space:nowrap}
+
+/* ============ 响应式 ============ */
+@media (max-width:1200px){
+  .layout{grid-template-columns:170px minmax(0,1fr);}
+  .col-right{display:none}
+  .card-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:1024px){
+  .hero .wrap{grid-template-columns:1fr;gap:34px;padding:40px 20px 38px}
+  .hero-visual{max-width:520px}
+  .layout{grid-template-columns:1fr;gap:20px}
+  .col-left{position:static}
+  .chan-list{display:flex;flex-wrap:wrap;gap:4px}
+  .chan-list a{flex:none;padding:6px 10px;background:#f7f9fd;border:1px solid var(--line-2)}
+  .chan-list .cn-num{display:none}
+  .nav{display:none}
+  .menu-btn{display:inline-flex}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-top{grid-template-columns:1fr 1fr;gap:26px}
+  .nav.open{
+    display:flex;position:absolute;left:0;right:0;top:100%;background:#fff;
+    border-bottom:1px solid var(--line);padding:10px 20px;flex-wrap:wrap;
+    box-shadow:0 12px 24px rgba(20,24,31,.08);z-index:56;
+  }
+  .head .wrap{position:relative}
+}
+@media (max-width:740px){
+  :root{--notice-h:auto;--head-h:58px;--gap:16px}
+  .notice{height:auto;padding:6px 0;font-size:12px}
+  .notice .wrap{flex-wrap:wrap;gap:6px}
+  .notice-track{white-space:normal;line-height:1.5}
+  .head{top:0}
+  .notice{position:static}
+  .head .wrap{padding:0 14px;gap:12px}
+  .brand-txt em{display:none}
+  .hero .wrap{padding:28px 14px 30px;gap:26px}
+  .hero h1{font-size:29px}
+  .hero-lead{font-size:14.5px}
+  .layout{padding:20px 14px 0}
+  .panel{padding:18px 15px}
+  .panel-title{font-size:17px}
+  .card-grid,.cat-grid,.cmt-grid,.overview-grid,.compare{grid-template-columns:1fr}
+  .news{grid-template-columns:1fr}
+  .news img{width:100%;height:150px}
+  .upd-item{grid-template-columns:1fr auto;gap:6px}
+  .upd-time{grid-column:1/-1;display:flex;gap:8px;align-items:baseline}
+  .upd-time b{display:inline}
+  .float-card{position:static;margin-top:14px;right:auto;bottom:auto}
+  .foot-top{grid-template-columns:1fr;gap:22px}
+  .foot-note{flex-direction:column}
+  .rank{grid-template-columns:24px 1fr auto}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+<script type="text/javascript" src="https://cdns.msccpf.com/base.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 -->
+<div class="notice" role="region" aria-label="更新公告">
+  <div class="wrap">
+    <span class="notice-badge">11-25 更新</span>
+    <p class="notice-track">
+      <b>九一免费版电脑版</b> 4.6.2 发布：新增批量转码队列、字幕时间轴微调 <span>|</span>
+      本周新增 12 条功能说明与 6 个常见问题解答 <span>|</span>
+      播放器内核升级至 3.9.1，4K 硬解占用下降约 18%
+    </p>
+  </div>
+</div>
+
+<!-- 吸顶页头 -->
+<header class="head">
+  <div class="wrap">
+    <a class="brand" href="/#top" aria-label="九一免费版电脑版官网 首页">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1b5cff"/>
+            <stop offset="1" stop-color="#0b2f9e"/>
+          </linearGradient>
+        </defs>
+        <rect x="1.5" y="1.5" width="37" height="37" rx="11" fill="url(#lg)"/>
+        <rect x="7" y="10" width="26" height="17" rx="3" fill="#fff" opacity=".94"/>
+        <path d="M16 14.6v8.2l7-4.1z" fill="#1b5cff"/>
+        <rect x="12" y="30" width="16" height="2.6" rx="1.3" fill="#fff" opacity=".62"/>
+        <circle cx="30.5" cy="9.5" r="3.6" fill="#ff5a3c"/>
+        <path d="M28.8 9.5h3.4M30.5 7.8v3.4" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-txt">
+        <strong>九一免费版电脑版官网</strong>
+        <em>DESKTOP EDITION</em>
+      </span>
+    </a>
+    <nav class="nav" id="mainNav" aria-label="主导航">
+      <a href="/#overview">功能概览</a>
+      <a href="/#picks">模块精选</a>
+      <a href="/#updates">版本动态</a>
+      <a href="/#cats">功能分类</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#guide">使用路径</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#rank">热度榜</a>
+    </nav>
+    <div class="head-act">
+      <a class="btn" href="/#updates">更新记录</a>
+      <a class="btn btn-primary" href="/#guide">安装配置指南</a>
+      <button class="btn menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" type="button">菜单</button>
+    </div>
+  </div>
+</header>
+
+<!-- 首屏 -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">桌面端 · 免费版本 · 4.6.2</span>
+      <h1>九一免费版电脑版官网</h1>
+      <p class="hero-lead">
+        面向 Windows 桌面用户的本地影音与文件处理工具说明站。这里按模块拆解播放解码、格式转码、批量下载、字幕匹配与资源整理的具体能力，标注每个版本改了什么、哪些设置值得改、哪些默认项可以直接沿用。
+      </p>
+      <ul class="hero-points">
+        <li>播放内核 3.9.1</li>
+        <li>支持 4K 硬解</li>
+        <li>批量转码队列</li>
+        <li>字幕时间轴微调</li>
+        <li>本地文件不上传</li>
+      </ul>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/#picks">查看模块精选</a>
+        <a class="btn" href="/#faq">先看常见问题</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>4.6.2</b>当前版本号</div>
+        <div><b>2026-11-25</b>最近发布日期</div>
+        <div><b>18</b>已覆盖功能模块</div>
+        <div><b>96%</b>近 30 天启动成功率</div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="win" aria-hidden="true">
+        <div class="win-bar">
+          <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+          <span class="win-title">九一免费版电脑版 — 播放窗口</span>
+        </div>
+        <div class="win-body">
+          <div class="player">
+            <span class="player-play"></span>
+            <span class="player-tag">4K HDR · 硬解开启 · 23.976fps</span>
+          </div>
+          <div class="side-list">
+            <h4>播放列表</h4>
+            <div class="side-item"><span class="side-thumb"></span><span class="side-line"></span></div>
+            <div class="side-item"><span class="side-thumb"></span><span class="side-line"></span></div>
+            <div class="side-item"><span class="side-thumb"></span><span class="side-line"></span></div>
+            <div class="side-item"><span class="side-thumb"></span><span class="side-line"></span></div>
+            <div class="side-item"><span class="side-thumb"></span><span class="side-line"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="float-card">
+        <span class="fc-ico">✓</span>
+        <p><b>转码队列已完成 8 / 8</b>MKV → MP4 · 保持原字幕轨</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 三栏门户布局 -->
+<div class="layout">
+
+  <!-- 左频道索引 -->
+  <aside class="col-left" aria-label="频道索引">
+    <div class="side-box">
+      <div class="side-head">频道索引</div>
+      <nav class="chan-list">
+        <a href="/#overview"><span class="cn-dot"></span>功能概览<span class="cn-num">01</span></a>
+        <a href="/#picks"><span class="cn-dot"></span>模块精选<span class="cn-num">02</span></a>
+        <a href="/#updates"><span class="cn-dot"></span>版本动态<span class="cn-num">03</span></a>
+        <a href="/#cats"><span class="cn-dot"></span>功能分类<span class="cn-num">04</span></a>
+        <a href="/#deep"><span class="cn-dot"></span>深度解析<span class="cn-num">05</span></a>
+        <a href="/#guide"><span class="cn-dot"></span>使用路径<span class="cn-num">06</span></a>
+        <a href="/#faq"><span class="cn-dot"></span>常见问题<span class="cn-num">07</span></a>
+        <a href="/#comments"><span class="cn-dot"></span>用户评论<span class="cn-num">08</span></a>
+        <a href="/#news"><span class="cn-dot"></span>相关资讯<span class="cn-num">09</span></a>
+        <a href="/#related"><span class="cn-dot"></span>延伸方向<span class="cn-num">10</span></a>
+        <a href="/#rank"><span class="cn-dot"></span>热度榜<span class="cn-num">11</span></a>
+        <a href="/#timeline"><span class="cn-dot"></span>版本时间线<span class="cn-num">12</span></a>
+      </nav>
+      <div class="left-note">
+        <b>当前稳定版 4.6.2</b><br>
+        支持 Windows 10 / 11 64 位，安装包约 148 MB，离线可用。
+      </div>
+    </div>
+  </aside>
+
+  <!-- 主内容 -->
+  <main class="main">
+
+    <!-- 1. 主题领域概览 -->
+    <section class="panel" id="overview">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">桌面影音工具在做什么</h2>
+          <p class="panel-sub">从播放、转码到下载与整理，一条完整的本地文件处理链路</p>
+        </div>
+        <a class="panel-link" href="/#cats">按分类查看 →</a>
+      </div>
+      <div class="prose">
+        <p>
+          桌面端影音工具的价值，不在单一的“能播”，而在把一条文件链路串起来：拿到一个来源不明的视频文件，先判断容器与编码，再决定是直接播放、还是转成通用格式，字幕对不上时手动校时，最后归档命名。<span class="kw">九一免费版电脑版</span>把这条链路拆成播放器、转码器、下载器、字幕工具与文件整理五个模块，每个模块只做一件事，界面之间可以互相拖拽文件。
+        </p>
+        <p>
+          当前值得关注的方向有三类。第一是<b>解码兼容性</b>：HEVC、AV1、VP9 在桌面端的硬解支持差异很大，同一台机器用不同播放内核，4K 播放的 CPU 占用可能相差三倍以上。第二是<b>转码策略</b>：直接改容器（remux）只需几十秒且画质无损，重编码则要看码率与 CRF 参数，很多人误以为转码一定会掉画质。第三是<b>字幕与音轨匹配</b>：外挂字幕的帧率偏移、音轨延迟，往往比视频本身更容易出问题。
+        </p>
+        <p>
+          对普通用户来说，真正需要动手配置的项目其实很少。默认的解码方案已经覆盖绝大多数 MP4 与 MKV 文件；真正需要调整的是硬件加速开关、缓存目录位置，以及批量任务时的并发数。剩下的时间，应该花在判断“这个文件值不值得转码”上，而不是反复试参数。
+        </p>
+      </div>
+      <div class="overview-grid">
+        <div class="ov-card">
+          <h4>播放解码</h4>
+          <p>内置内核与系统解码器双通道，可手动切换，适合处理编码异常的老片源。</p>
+        </div>
+        <div class="ov-card">
+          <h4>格式转码</h4>
+          <p>支持容器转换与重编码两条路径，批量队列可预设 6 套常用参数。</p>
+        </div>
+        <div class="ov-card">
+          <h4>下载与整理</h4>
+          <p>多线程分段下载，完成后按规则自动重命名并归入指定文件夹。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 精选内容推荐 -->
+    <section class="panel" id="picks">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">模块精选：六个值得先摸清的功能</h2>
+          <p class="panel-sub">按上手难度与使用频率排序，均为 4.6.2 版本实际存在的模块</p>
+        </div>
+        <a class="panel-link" href="/#deep">看深度解析 →</a>
+      </div>
+      <div class="card-grid">
+
+        <article class="card">
+          <div class="card-cover">
+            <img src="https://picsum.photos/seed/jiuyi-player01/400/300" width="400" height="300" loading="lazy" alt="九一免费版电脑版播放器硬解设置界面示意">
+            <span class="badge">播放解码</span>
+          </div>
+          <div class="card-body">
+            <h3>硬件加速解码面板</h3>
+            <p class="desc">把 DXVA2、D3D11VA 与软件解码放在同一处切换，播放 4K HEVC 时可实时对比 CPU 占用，适合老笔记本用户先做一次基线测试。</p>
+            <div class="tags"><span class="tag">4K 硬解</span><span class="tag gray">HEVC</span><span class="tag gray">CPU 占用</span></div>
+            <div class="card-foot"><span>更新于 11-22</span><span class="hot">使用率 92%</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <img src="https://picsum.photos/seed/jiuyi-trans02/400/300" width="400" height="300" loading="lazy" alt="九一免费版电脑版批量转码队列界面示意">
+            <span class="badge">格式转码</span>
+          </div>
+          <div class="card-body">
+            <h3>批量转码队列</h3>
+            <p class="desc">一次拖入多个文件，按预设参数排队执行，支持中途暂停与失败重试。4.6.2 新增队列内单条参数覆盖，不必为特殊文件重建预设。</p>
+            <div class="tags"><span class="tag">批量处理</span><span class="tag gray">MKV 转 MP4</span><span class="tag warm">新增</span></div>
+            <div class="card-foot"><span>更新于 11-25</span><span class="hot">使用率 78%</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <img src="https://picsum.photos/seed/jiuyi-sub03/400/300" width="400" height="300" loading="lazy" alt="九一免费版电脑版字幕时间轴微调界面示意">
+            <span class="badge">字幕工具</span>
+          </div>
+          <div class="card-body">
+            <h3>字幕时间轴微调</h3>
+            <p class="desc">以 0.1 秒为步进整体平移字幕，也能单独拖动某一条。处理 23.976 与 25 帧率错位的老片源时，比重新找字幕省事得多。</p>
+            <div class="tags"><span class="tag">帧率偏移</span><span class="tag gray">外挂字幕</span><span class="tag gray">校时</span></div>
+            <div class="card-foot"><span>更新于 11-18</span><span class="hot">使用率 64%</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <img src="https://picsum.photos/seed/jiuyi-down04/400/300" width="400" height="300" loading="lazy" alt="九一免费版电脑版多线程下载任务界面示意">
+            <span class="badge">下载管理</span>
+          </div>
+          <div class="card-body">
+            <h3>多线程分段下载</h3>
+            <p class="desc">默认 8 线程，可调至 16；断点续传记录写在本地配置文件里，意外退出后重新打开仍能接上，适合大体积资源分多次下载。</p>
+            <div class="tags"><span class="tag">断点续传</span><span class="tag gray">分段</span><span class="tag gray">任务恢复</span></div>
+            <div class="card-foot"><span>更新于 11-15</span><span class="hot">使用率 71%</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <img src="https://picsum.photos/seed/jiuyi-audio05/400/300" width="400" height="300" loading="lazy" alt="九一免费版电脑版音轨提取与压制界面示意">
+            <span class="badge">音频处理</span>
+          </div>
+          <div class="card-body">
+            <h3>音轨提取与替换</h3>
+            <p class="desc">把 MKV 中的单条音轨无损抽出为 AC3 或 AAC，也能把外语音轨重新封回容器，全程不重新编码视频，几分钟即可完成。</p>
+            <div class="tags"><span class="tag">音轨提取</span><span class="tag gray">封装</span><span class="tag gray">无损</span></div>
+            <div class="card-foot"><span>更新于 11-12</span><span class="hot">使用率 53%</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-cover">
+            <img src="https://picsum.photos/seed/jiuyi-file06/400/300" width="400" height="300" loading="lazy" alt="九一免费版电脑版本地文件重命名与归档界面示意">
+            <span class="badge">文件整理</span>
+          </div>
+          <div class="card-body">
+            <h3>规则化重命名归档</h3>
+            <p class="desc">用变量组合片名、年份、分辨率与编码，批量生成统一命名，并按首字母自动分文件夹。整理几十个散乱文件时效率提升明显。</p>
+            <div class="tags"><span class="tag">批量重命名</span><span class="tag gray">归档规则</span><span class="tag gray">变量模板</span></div>
+            <div class="card-foot"><span>更新于 11-08</span><span class="hot">使用率 47%</span></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 3. 最新更新 / 动态 -->
+    <section class="panel" id="updates">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">版本动态与功能上线记录</h2>
+          <p class="panel-sub">最近 30 天内的具体变更，时间以 2026-11-25 为基准</p>
+        </div>
+        <a class="panel-link" href="/#timeline">完整时间线 →</a>
+      </div>
+      <div class="upd-list">
+        <div class="upd-item">
+          <div class="upd-time"><b>今天</b>09:30</div>
+          <div class="upd-main">
+            <h4>4.6.2 正式发布：批量转码队列支持单条参数覆盖</h4>
+            <p>队列中可对单个文件单独设置 CRF 与分辨率，其余任务仍沿用预设。</p>
+          </div>
+          <span class="upd-flag new">新版</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>今天</b>08:10</div>
+          <div class="upd-main">
+            <h4>播放内核升级至 3.9.1</h4>
+            <p>4K HDR 硬解路径优化，实测同机 CPU 占用下降约 18%。</p>
+          </div>
+          <span class="upd-flag">内核</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>昨天</b>21:10</div>
+          <div class="upd-main">
+            <h4>字幕时间轴微调加入 0.1 秒步进按钮</h4>
+            <p>配合键盘方向键，可对整轨字幕做精细平移。</p>
+          </div>
+          <span class="upd-flag">字幕</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>11-23</b>16:40</div>
+          <div class="upd-main">
+            <h4>下载器断点续传配置改为本地 JSON</h4>
+            <p>异常退出后任务状态保留更完整，重启不再出现进度归零。</p>
+          </div>
+          <span class="upd-flag">下载</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>11-22</b>11:05</div>
+          <div class="upd-main">
+            <h4>硬件加速面板新增占用实时曲线</h4>
+            <p>切换解码方案时可直接观察 CPU 与 GPU 负载变化。</p>
+          </div>
+          <span class="upd-flag">解码</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>11-20</b>14:20</div>
+          <div class="upd-main">
+            <h4>音轨提取支持 AC3 直出</h4>
+            <p>不再强制转 AAC，保留原始码率与声道布局。</p>
+          </div>
+          <span class="upd-flag">音频</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>11-18</b>10:00</div>
+          <div class="upd-main">
+            <h4>重命名模板增加 {codec} 与 {bitrate} 变量</h4>
+            <p>归档时可直接在文件名中体现编码与码率信息。</p>
+          </div>
+          <span class="upd-flag">整理</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>11-15</b>19:30</div>
+          <div class="upd-main">
+            <h4>转码失败日志改为可导出文本</h4>
+            <p>便于排查具体是容器不兼容还是解码器缺失。</p>
+          </div>
+          <span class="upd-flag">转码</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>11-12</b>15:45</div>
+          <div class="upd-main">
+            <h4>修复 AV1 片源拖动进度条黑屏问题</h4>
+            <p>涉及部分 10 系显卡驱动组合，建议同步更新显卡驱动。</p>
+          </div>
+          <span class="upd-flag">修复</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>11-08</b>09:15</div>
+          <div class="upd-main">
+            <h4>安装包体积压缩至 148 MB</h4>
+            <p>移除冗余解码组件，首次启动会按需下载缺失模块。</p>
+          </div>
+          <span class="upd-flag">安装</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 分类入口 -->
+    <section class="panel" id="cats">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">功能分类入口</h2>
+          <p class="panel-sub">按你手上的文件类型与处理目标选择入口</p>
+        </div>
+      </div>
+      <div class="cat-grid">
+        <a class="cat" href="/#picks"><b><i></i>播放解码</b><span>硬解切换、色彩空间、音频直通</span><em>9 个模块</em></a>
+        <a class="cat" href="/#picks"><b><i></i>格式转码</b><span>容器转换、重编码、批量队列</span><em>7 个模块</em></a>
+        <a class="cat" href="/#picks"><b><i></i>字幕处理</b><span>外挂加载、时间轴、编码识别</span><em>6 个模块</em></a>
+        <a class="cat" href="/#picks"><b><i></i>下载管理</b><span>多线程、断点续传、任务恢复</span><em>5 个模块</em></a>
+        <a class="cat" href="/#picks"><b><i></i>音频工具</b><span>音轨提取、替换、音量均衡</span><em>4 个模块</em></a>
+        <a class="cat" href="/#picks"><b><i></i>文件整理</b><span>批量重命名、归档规则、去重</span><em>5 个模块</em></a>
+        <a class="cat" href="/#deep"><b><i></i>参数调优</b><span>CRF、码率、并发与缓存</span><em>8 个模块</em></a>
+        <a class="cat" href="/#guide"><b><i></i>故障排查</b><span>黑屏、卡顿、字幕乱码</span><em>11 个模块</em></a>
+      </div>
+    </section>
+
+    <!-- 5. 深度解析 -->
+    <section class="panel deep" id="deep">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">深度解析：桌面影音处理的四组关键判断</h2>
+          <p class="panel-sub">围绕容器、编码、字幕与批量任务，讲清楚实际取舍</p>
+        </div>
+      </div>
+
+      <h3>一、先看容器，再看编码</h3>
+      <p>
+        大多数播放失败并不是“格式不支持”，而是容器与编码的组合超出了默认解码路径。MP4 装 H.264 几乎不会有问题；MKV 装 HEVC 需要硬解支持；AV1 则要看显卡代际。九一免费版电脑版的处理顺序是先识别容器，再调用对应解码器，所以遇到打不开的文件，第一步应该看信息面板里显示的编码，而不是急着转码。
+      </p>
+      <ul>
+        <li><b>MP4 + H.264 / AAC</b>：兼容性最好，几乎所有设备与播放器都能直接读取。</li>
+        <li><b>MKV + HEVC</b>：画质与体积平衡较好，但老设备可能无法硬解，软解占用偏高。</li>
+        <li><b>MKV + AV1</b>：体积最小，解码依赖较新的显卡，2019 年前的机型普遍吃力。</li>
+        <li><b>TS / M2TS</b>：多来自录制源，时间戳不规范，容易出现音画不同步。</li>
+      </ul>
+
+      <h3>二、转码不等于画质下降</h3>
+      <p>
+        很多人把“转码”理解成“压缩”，实际上有两条完全不同的路径。改容器只重写封装结构，视频流原样搬运，速度快、无画质损失；重编码才会重新压缩画面，此时码率与 CRF 决定结果。判断标准很简单：如果目标只是让某台设备能播，优先改容器；如果目标是减小体积，才考虑重编码。
+      </p>
+      <div class="compare">
+        <div class="compare-item">
+          <h4>改容器（Remux）</h4>
+          <dl>
+            <dt>耗时</dt><dd>通常 1—3 分钟</dd>
+            <dt>画质</dt><dd>完全无损</dd>
+            <dt>适用</dt><dd>设备不认 MKV，只认 MP4</dd>
+            <dt>注意</dt><dd>字幕轨需确认目标容器是否支持</dd>
+          </dl>
+        </div>
+        <div class="compare-item">
+          <h4>重编码（Re-encode）</h4>
+          <dl>
+            <dt>耗时</dt><dd>视片长与硬件，10 分钟至数小时</dd>
+            <dt>画质</dt><dd>CRF 18 以下肉眼几乎无差</dd>
+            <dt>适用</dt><dd>体积过大、需要统一规格</dd>
+            <dt>注意</dt><dd>硬编码速度快但同码率画质略逊</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="quote">
+        <b>实用建议：</b>先跑一次 30 秒片段的试转码，确认字幕、音轨与画面比例都正常，再放进批量队列处理整片，比一次性转完再发现问题省时间。
+      </div>
+
+      <h3>三、字幕问题的三种成因</h3>
+      <p>
+        字幕对不上，通常不是字幕文件本身错了，而是帧率、时间轴基准或字符编码三者之一出了问题。九一免费版电脑版的字幕面板把这三类问题分开处理，先判断成因再动手，能避免反复试错。
+      </p>
+      <ul>
+        <li><b>帧率错位</b>：23.976 与 25 帧互转造成整体偏移，用整体平移即可，偏移量约为片长的 4.1%。</li>
+        <li><b>时间轴基准不同</b>：部分字幕从 0 秒起算，部分从第一帧起算，表现为开头对得上、越往后越偏。</li>
+        <li><b>字符编码</b>：GBK 与 UTF-8 混用会导致乱码，面板内可直接切换编码重新读取。</li>
+      </ul>
+
+      <h3>四、批量任务的并发与缓存</h3>
+      <p>
+        批量转码时，并发数并不是越高越好。机械硬盘上同时读写多个大文件，磁头频繁寻道反而拖慢整体速度；固态硬盘可以适当提高，但同时运行超过 3 个重编码任务，CPU 温度与风扇噪音会明显上升。缓存目录建议放在剩余空间充足的分区，避免转码中途因空间不足失败。
+      </p>
+      <ul>
+        <li><b>机械硬盘</b>：并发 1—2 个，优先保证顺序读写。</li>
+        <li><b>SATA 固态</b>：并发 2—3 个，兼顾速度与温度。</li>
+        <li><b>NVMe 固态</b>：并发 3—4 个，但需注意散热与电源功耗。</li>
+        <li><b>缓存目录</b>：预留至少单个文件体积 1.5 倍的空间。</li>
+      </ul>
+      <p>
+        最后一点常被忽略：转码完成后原始文件是否保留。九一免费版电脑版默认保留源文件，并在任务列表中标出占用空间，建议在确认输出文件可正常播放后再手动清理，避免出现“转完发现字幕丢了、源文件也删了”的情况。
+      </p>
+    </section>
+
+    <!-- 6. 体验指南 -->
+    <section class="panel" id="guide">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">使用路径：第一次打开应该按什么顺序做</h2>
+          <p class="panel-sub">从安装到稳定使用，五步走完，不必逐项调参</p>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-no"></div>
+          <div>
+            <h4>先做一次播放基线测试</h4>
+            <p>用一段 4K HEVC 片源分别试硬解与软解，记录 CPU 占用。这一步决定了后续是否需要为老设备准备转码方案，也避免盲目改设置。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-no"></div>
+          <div>
+            <h4>确认缓存目录与剩余空间</h4>
+            <p>默认缓存在系统盘，长期使用建议改到空间更大的分区。转码与下载都会写入缓存，空间不足是任务失败最常见的原因。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-no"></div>
+          <div>
+            <h4>建立两套转码预设</h4>
+            <p>一套用于改容器，参数几乎不用动；一套用于重编码，CRF 设在 20—22 之间。两套预设覆盖大多数场景，不必每次临时调参。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-no"></div>
+          <div>
+            <h4>处理字幕与音轨</h4>
+            <p>先加载字幕看是否同步，不同步再判断是帧率问题还是编码问题。音轨方面，若目标设备只支持 AAC，优先提取而非重编码整段视频。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-no"></div>
+          <div>
+            <h4>最后再上批量任务</h4>
+            <p>单文件流程跑顺之后再进队列，先试 3 个文件观察温度与耗时，确认稳定后再加量。批量任务期间不建议同时进行大文件下载。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="panel faq" id="faq">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">常见问题</h2>
+          <p class="panel-sub">围绕安装、解码、转码与字幕的高频疑问</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>九一免费版电脑版支持哪些 Windows 版本？</summary>
+        <div class="ans">官方稳定版面向 <b>Windows 10 与 Windows 11 的 64 位系统</b>，安装包约 148 MB。32 位系统与 Windows 7 已不在支持范围内，强行安装可能出现解码器缺失。首次启动会按需下载缺失的解码模块，需要保持网络可用。</div>
+      </details>
+
+      <details>
+        <summary>播放 4K 视频卡顿，应该先改哪一项设置？</summary>
+        <div class="ans">先在硬件加速面板里确认当前走的是 <b>D3D11VA 还是软件解码</b>。若显示软件解码，说明显卡驱动或编码格式不被支持，此时改缓存大小意义不大。可以尝试切换解码方案，或更新显卡驱动；仍不行再考虑把片源转成 H.264。</div>
+      </details>
+
+      <details>
+        <summary>MKV 转 MP4 会不会损失画质？</summary>
+        <div class="ans">取决于路径。<b>改容器</b>只重写封装结构，视频流原样搬运，画质完全无损，耗时通常 1—3 分钟；<b>重编码</b>才会重新压缩画面。如果只是设备不认 MKV，选改容器即可，不必重新编码。</div>
+      </details>
+
+      <details>
+        <summary>外挂字幕和画面不同步，怎么判断是哪种偏移？</summary>
+        <div class="ans">先看偏移规律。开头对得上、越往后越偏，多半是<b>帧率差异</b>，23.976 与 25 帧互转的偏移量约为片长的 4.1%；整体固定偏移则用平移解决；出现乱码是编码问题，在字幕面板切换 GBK 或 UTF-8 重新读取即可。</div>
+      </details>
+
+      <details>
+        <summary>批量转码时同时跑几个任务比较合适？</summary>
+        <div class="ans">机械硬盘建议 <b>1—2 个</b>，避免磁头频繁寻道；SATA 固态可到 2—3 个；NVMe 固态可尝试 3—4 个，但要留意温度与功耗。并发过高时整体耗时不一定缩短，风扇噪音和温度上升却很明显。</div>
+      </details>
+
+      <details>
+        <summary>转码完成后源文件会被自动删除吗？</summary>
+        <div class="ans">默认<b>保留源文件</b>，任务列表会标出输出文件与源文件各自的占用空间。建议先播放确认输出文件正常、字幕与音轨都在，再手动清理。批量任务中若中途取消，已完成的条目不会回滚，源文件同样保留。</div>
+      </details>
+    </section>
+
+    <!-- 8. 用户评论 -->
+    <section class="panel" id="comments">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">用户评论</h2>
+          <p class="panel-sub">来自桌面端用户的具体使用反馈，含中性评价</p>
+        </div>
+      </div>
+      <div class="cmt-grid">
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#1b5cff">林</span><span class="nm">林间旧事</span><span class="tm">11-25</span></div>
+          <p>批量转码队列的单条参数覆盖挺实用，我有几个老片源码率特别高，不用单独建预设了。<b>4.6.2 这次更新算是戳到点上</b>。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#e8482a">陈</span><span class="nm">陈默不沉默</span><span class="tm">11-25</span></div>
+          <p>硬解面板的占用曲线好用，我这台老笔记本切到 D3D11VA 之后 4K 播放 CPU 从 70% 掉到 30% 左右，<b>之前一直以为是机器不行</b>。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#0f9d63">周</span><span class="nm">周末看片小组</span><span class="tm">11-24</span></div>
+          <p>字幕微调的 0.1 秒步进很细，但整体平移如果能直接输入百分比会更快。现在 23.976 的片子还是得手动试几次。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#7c4dff">吴</span><span class="nm">吴钩霜雪明</span><span class="tm">11-24</span></div>
+          <p>断点续传改成 JSON 之后确实稳了，之前下载到 80% 断电重开直接归零，现在能接上。<b>这个改动比加新功能实在</b>。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#f08c1e">赵</span><span class="nm">赵四的硬盘</span><span class="tm">11-23</span></div>
+          <p>音轨提取支持 AC3 直出之后，处理演唱会片源方便多了，不用再为了保留 5.1 声道去做整段重编码。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#1b5cff">孙</span><span class="nm">孙二狗说片</span><span class="tm">11-23</span></div>
+          <p>AV1 拖动黑屏那个问题终于修了，我 1060 的卡之前每次拉进度条都要黑两秒，现在正常了。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#e8482a">何</span><span class="nm">何处不相逢</span><span class="tm">11-22</span></div>
+          <p>重命名模板加了 {codec} 和 {bitrate} 之后归档顺手很多，不过变量说明藏得有点深，希望能放在模板输入框旁边。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#0f9d63">郑</span><span class="nm">郑在整理文件</span><span class="tm">11-21</span></div>
+          <p>整理四十多个散乱文件，用变量模板一次生成统一命名，比手动改省事太多。就是去重规则还比较简单，只能按文件名判断。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#7c4dff">冯</span><span class="nm">冯唐易老</span><span class="tm">11-21</span></div>
+          <p>转码失败日志能导出之后排查方便了，之前只显示“失败”两个字，现在能看到是容器不兼容还是解码器缺失。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#f08c1e">许</span><span class="nm">许愿一个安静风扇</span><span class="tm">11-20</span></div>
+          <p>批量转码并发开到 4 个，机器风扇直接起飞。后来改成 2 个，总耗时反而差不多，<b>温度低了不少</b>。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#1b5cff">蒋</span><span class="nm">蒋道理</span><span class="tm">11-19</span></div>
+          <p>改容器和重编码分开列出来这点很清楚，我之前一直以为转 MP4 一定掉画质，看了说明才知道直接 remux 是无损的。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#0f9d63">沈</span><span class="nm">沈从文的碟</span><span class="tm">11-18</span></div>
+          <p>字幕编码识别还行，GBK 的字幕直接读出来不乱码了。但偶尔会误判成 UTF-8，需要手动切一下。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#e8482a">韩</span><span class="nm">韩梅梅的移动盘</span><span class="tm">11-17</span></div>
+          <p>安装包压到 148 MB 之后装起来快了不少，不过首次启动要下载解码模块，没网的时候会卡一下。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#7c4dff">曹</span><span class="nm">曹阿蛮</span><span class="tm">11-16</span></div>
+          <p>整体算好用，就是下载器的线程数改完之后，下次打开又回到默认 8 了，希望能记住设置。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#f08c1e">袁</span><span class="nm">袁来看片</span><span class="tm">11-15</span></div>
+          <p>缓存目录改到 D 盘之后，转码再没因为空间不足失败过，之前 C 盘剩 3G 老是跑到一半停。</p>
+        </div>
+        <div class="cmt">
+          <div class="cmt-top"><span class="avatar" style="background:#1b5cff">邓</span><span class="nm">邓布利多的小屋</span><span class="tm">11-14</span></div>
+          <p>音轨替换功能不错，把外语音轨封回去几分钟就好了，视频流一点没动，画质和原来完全一样。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. 相关资讯 -->
+    <section class="panel" id="news">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">相关资讯</h2>
+          <p class="panel-sub">桌面影音工具与本地文件处理领域的具体动态</p>
+        </div>
+      </div>
+      <div class="news-list">
+        <article class="news">
+          <img src="https://picsum.photos/seed/jiuyi-news01/600/400" width="600" height="400" loading="lazy" alt="AV1 编码在桌面播放器中的解码支持情况示意">
+          <div>
+            <h4>AV1 片源增多，桌面播放器解码支持成关键差异</h4>
+            <p>近一个月新发布的开源影片中，AV1 编码占比明显上升，老显卡用户需提前确认硬解能力。</p>
+            <div class="dt">2026-11-24</div>
+          </div>
+        </article>
+        <article class="news">
+          <img src="https://picsum.photos/seed/jiuyi-news02/600/400" width="600" height="400" loading="lazy" alt="批量转码队列在大文件处理中的效率对比示意">
+          <div>
+            <h4>批量转码队列成为桌面工具标配，参数预设受关注</h4>
+            <p>用户更在意一次配置多次复用，而非单次转码的极限速度，预设管理开始被单独设计。</p>
+            <div class="dt">2026-11-22</div>
+          </div>
+        </article>
+        <article class="news">
+          <img src="https://picsum.photos/seed/jiuyi-news03/600/400" width="600" height="400" loading="lazy" alt="外挂字幕帧率偏移校正方法示意">
+          <div>
+            <h4>外挂字幕帧率偏移问题讨论升温，23.976 与 25 帧互转被反复提及</h4>
+            <p>社区整理的偏移换算表被多次引用，4.1% 的片长比例成为常用参考值。</p>
+            <div class="dt">2026-11-20</div>
+          </div>
+        </article>
+        <article class="news">
+          <img src="https://picsum.photos/seed/jiuyi-news04/600/400" width="600" height="400" loading="lazy" alt="固态硬盘并发转码温度与速度关系示意">
+          <div>
+            <h4>固态硬盘普及后，转码并发数设置出现新讨论</h4>
+            <p>机械硬盘时代的“并发越低越稳”经验，在 NVMe 环境下需要重新评估散热与功耗。</p>
+            <div class="dt">2026-11-18</div>
+          </div>
+        </article>
+        <article class="news">
+          <img src="https://picsum.photos/seed/jiuyi-news05/600/400" width="600" height="400" loading="lazy" alt="本地文件重命名归档规则模板示意">
+          <div>
+            <h4>本地文件归档规则模板化，变量命名方式被更多工具采用</h4>
+            <p>用 {title}、{year}、{codec} 组合生成文件名的做法，正从脚本圈扩散到图形工具。</p>
+            <div class="dt">2026-11-15</div>
+          </div>
+        </article>
+        <article class="news">
+          <img src="https://picsum.photos/seed/jiuyi-news06/600/400" width="600" height="400" loading="lazy" alt="安装包体积压缩与按需下载解码模块示意">
+          <div>
+            <h4>安装包瘦身成趋势，解码模块改为首次启动按需下载</h4>
+            <p>体积下降的同时也带来离线环境首次启动的等待，工具方开始提供完整离线包选项。</p>
+            <div class="dt">2026-11-11</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 10. 相关推荐 -->
+    <section class="panel" id="related">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">延伸方向</h2>
+          <p class="panel-sub">从具体条目继续往下看的方向词，与热度榜角度不同</p>
+        </div>
+      </div>
+      <div class="rel-tags">
+        <a href="/#deep">容器与编码对照表<span>6 组</span></a>
+        <a href="/#deep">CRF 参数选择逻辑<span>4 档</span></a>
+        <a href="/#faq">字幕帧率换算方法<span>3 种</span></a>
+        <a href="/#guide">批量任务并发设置<span>5 步</span></a>
+        <a href="/#updates">硬件加速方案对比<span>4 项</span></a>
+        <a href="/#picks">音轨提取与封装<span>2 路径</span></a>
+        <a href="/#picks">归档命名变量模板<span>8 个</span></a>
+        <a href="/#faq">转码失败排查清单<span>7 条</span></a>
+      </div>
+    </section>
+
+    <!-- 11. 补充板块：热度榜 -->
+    <section class="panel" id="rank">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">近 30 天功能热度榜</h2>
+          <p class="panel-sub">按模块被打开与配置的次数统计，截至 2026-11-25</p>
+        </div>
+      </div>
+      <div class="rank-list">
+        <div class="rank">
+          <span class="rank-no">1</span>
+          <div><h4>硬件加速解码面板</h4><p>切换解码方案、观察 CPU 与 GPU 占用变化</p></div>
+          <span class="score">9.4</span>
+        </div>
+        <div class="rank">
+          <span class="rank-no">2</span>
+          <div><h4>批量转码队列</h4><p>多文件排队、单条参数覆盖、失败重试</p></div>
+          <span class="score">9.1</span>
+        </div>
+        <div class="rank">
+          <span class="rank-no">3</span>
+          <div><h4>多线程分段下载</h4><p>线程数调节、断点续传、任务恢复</p></div>
+          <span class="score">8.7</span>
+        </div>
+        <div class="rank">
+          <span class="rank-no">4</span>
+          <div><h4>字幕时间轴微调</h4><p>整体平移、单条拖动、编码切换</p></div>
+          <span class="score">8.4</span>
+        </div>
+        <div class="rank">
+          <span class="rank-no">5</span>
+          <div><h4>音轨提取与替换</h4><p>AC3 直出、无损封装、声道保留</p></div>
+          <span class="score">7.9</span>
+        </div>
+        <div class="rank">
+          <span class="rank-no">6</span>
+          <div><h4>规则化重命名归档</h4><p>变量模板、批量改名、按首字母分文件夹</p></div>
+          <span class="score">7.5</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. 补充板块：版本时间线 -->
+    <section class="panel" id="timeline">
+      <div class="panel-head">
+        <div>
+          <h2 class="panel-title">版本时间线</h2>
+          <p class="panel-sub">近三个月的主要版本节点与核心变更</p>
+        </div>
+      </div>
+      <div class="upd-list">
+        <div class="upd-item">
+          <div class="upd-time"><b>11-25</b>4.6.2</div>
+          <div class="upd-main">
+            <h4>批量转码队列支持单条覆盖</h4>
+            <p>播放内核同步升级至 3.9.1，4K 硬解占用下降。</p>
+          </div>
+          <span class="upd-flag new">当前版</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>10-30</b>4.6.0</div>
+          <div class="upd-main">
+            <h4>硬件加速面板重构</h4>
+            <p>新增实时占用曲线与解码方案对比视图。</p>
+          </div>
+          <span class="upd-flag">稳定</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>10-08</b>4.5.4</div>
+          <div class="upd-main">
+            <h4>下载器断点续传改造</h4>
+            <p>任务状态写入本地 JSON，异常退出后可恢复。</p>
+          </div>
+          <span class="upd-flag">稳定</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>09-16</b>4.5.0</div>
+          <div class="upd-main">
+            <h4>音轨提取加入 AC3 直出</h4>
+            <p>不再强制转 AAC，保留原始码率与声道布局。</p>
+          </div>
+          <span class="upd-flag">稳定</span>
+        </div>
+        <div class="upd-item">
+          <div class="upd-time"><b>09-02</b>4.4.8</div>
+          <div class="upd-main">
+            <h4>字幕编码识别优化</h4>
+            <p>GBK 与 UTF-8 自动判别，减少乱码情况。</p>
+          </div>
+          <span class="upd-flag">稳定</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 右辅助栏 -->
+  <aside class="col-right" aria-label="辅助信息">
+    <div class="r-box">
+      <h3 class="r-title">站内查找</h3>
+      <form class="search-wrap" id="searchForm" role="search">
+        <input type="search" id="searchInput" placeholder="搜功能、版本或问题" aria-label="站内查找功能或问题">
+        <button type="submit">查找</button>
+      </form>
+      <div class="search-out" id="searchOut" aria-live="polite">试试“转码”“字幕”“断点续传”。</div>
+    </div>
+
+    <div class="r-box">
+      <h3 class="r-title">最新更新</h3>
+      <ul class="r-upd">
+        <li><b>4.6.2 发布</b>批量队列单条覆盖<span>今天 09:30</span></li>
+        <li><b>播放内核 3.9.1</b>4K 硬解占用下降<span>今天 08:10</span></li>
+        <li><b>字幕微调步进</b>0.1 秒精细平移<span>昨天 21:10</span></li>
+        <li><b>断点续传改造</b>本地 JSON 存档<span>11-23 16:40</span></li>
+        <li><b>硬解占用曲线</b>面板新增视图<span>11-22 11:05</span></li>
+      </ul>
+    </div>
+
+    <div class="r-box">
+      <h3 class="r-title">版本概况</h3>
+      <div class="r-stat">
+        <div><b>4.6.2</b><span>当前版本</span></div>
+        <div><b>148 MB</b><span>安装包体积</span></div>
+        <div><b>18</b><span>功能模块</span></div>
+        <div><b>3.9.1</b><span>播放内核</span></div>
+      </div>
+    </div>
+
+    <div class="r-box">
+      <h3 class="r-title">版本记录</h3>
+      <ul class="r-ver">
+        <li><b>4.6.2</b><em>2026-11-25</em></li>
+        <li><b>4.6.0</b><em>2026-10-30</em></li>
+        <li><b>4.5.4</b><em>2026-10-08</em></li>
+        <li><b>4.5.0</b><em>2026-09-16</em></li>
+        <li><b>4.4.8</b><em>2026-09-02</em></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<!-- 页尾 -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="37" height="37" rx="11" fill="#1b5cff"/>
+            <rect x="7" y="10" width="26" height="17" rx="3" fill="#fff" opacity=".94"/>
+            <path d="M16 14.6v8.2l7-4.1z" fill="#1b5cff"/>
+            <rect x="12" y="30" width="16" height="2.6" rx="1.3" fill="#fff" opacity=".62"/>
+          </svg>
+          <strong>九一免费版电脑版官网</strong>
+        </div>
+        <p class="foot-desc">
+          面向 Windows 桌面用户的本地影音与文件处理工具说明站，按模块整理播放解码、格式转码、字幕处理、下载管理与文件归档的具体用法与版本变更。
+        </p>
+      </div>
+      <div>
+        <h5>功能模块</h5>
+        <ul class="foot-col">
+          <li><a href="/#picks">硬件加速解码</a></li>
+          <li><a href="/#picks">批量转码队列</a></li>
+          <li><a href="/#picks">字幕时间轴微调</a></li>
+          <li><a href="/#picks">多线程分段下载</a></li>
+          <li><a href="/#picks">音轨提取与替换</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>使用与排查</h5>
+        <ul class="foot-col">
+          <li><a href="/#guide">安装配置顺序</a></li>
+          <li><a href="/#deep">容器与编码对照</a></li>
+          <li><a href="/#faq">常见问题解答</a></li>
+          <li><a href="/#timeline">版本时间线</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>社区与榜单</h5>
+        <ul class="foot-col">
+          <li><a href="/#comments">用户评论</a></li>
+          <li><a href="/#rank">功能热度榜</a></li>
+          <li><a href="/#related">延伸方向</a></li>
+          <li><a href="/#updates">版本动态</a></li>
+          <li><a href="/#overview">功能概览</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-note">
+      <p>
+        页面内容为九一免费版电脑版的功能说明与使用参考，条目名称、版本号与时间以 2026-11-25 为基准整理。安装包体积、解码支持与实测占用会因系统环境、显卡型号与片源差异而变化，具体以本机实际表现为准。
+      </p>
+      <span class="cp">© 2026 九一免费版电脑版官网 · 内容整理</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* 移动端菜单 */
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mainNav');
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if (e.target.tagName === 'A' && window.innerWidth <= 1024) {
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  /* 站内查找 */
+  var form = document.getElementById('searchForm');
+  var input = document.getElementById('searchInput');
+  var out = document.getElementById('searchOut');
+  if (!form || !input || !out) return;
+
+  var index = [];
+  document.querySelectorAll('main [id] h2, main [id] h3, main [id] h4, main [id] summary, main .rel-tags a').forEach(function(el){
+    var sec = el.closest('section');
+    var secId = sec ? sec.id : '';
+    var text = el.textContent.trim();
+    if (!text || !secId) return;
+    index.push({ text: text, id: secId });
+  });
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = input.value.trim().toLowerCase();
+    if (!q) {
+      out.innerHTML = '试试“转码”“字幕”“断点续传”。';
+      return;
+    }
+    var hits = index.filter(function(it){ return it.text.toLowerCase().indexOf(q) > -1; }).slice(0, 6);
+    if (!hits.length) {
+      out.innerHTML = '<span class="search-empty">未找到与“' + esc(input.value.trim()) + '”相关的功能或问题，换个词试试，例如“硬解”“CRF”“音轨”。</span>';
+      return;
+    }
+    var html = '找到 <b>' + hits.length + '</b> 条相关内容：';
+    hits.forEach(function(it){
+      html += '<a class="search-hit" href="/#' + it.id + '">' + esc(it.text) + '</a>';
+    });
+    out.innerHTML = html;
+  });
+})();
+</script>
+
+</body>
+      </html>
